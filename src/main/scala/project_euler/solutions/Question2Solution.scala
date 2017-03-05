@@ -15,7 +15,6 @@ object Question2Solution extends Solution {
     |find the sum of the even-valued terms.
     |""".stripMargin
 
-
   override def result = {
     // Was pretty obvious this needed to be a stream - copied precise implementation directly from
     // http://www.scala-lang.org/api/2.12.x/scala/collection/immutable/Stream.html

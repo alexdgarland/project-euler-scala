@@ -12,7 +12,6 @@ object Question1Solution extends Solution {
     |The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.
     |""".stripMargin
 
-
   override def result = Range(1, 1000).filter(i => (i % 3 == 0) || (i % 5 == 0)).sum.toString
 
 }
