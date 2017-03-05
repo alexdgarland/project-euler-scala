@@ -8,10 +8,10 @@ object EulerApp extends App {
 
   getSolution(questionNumber) match {
     case None =>
-      println(s"ERROR - Solution not implemented for question $questionNumber")
+      println(s"ERROR - Solution not implemented for question $questionNumber.")
     case Some(solution) =>
       println(solution.description)
-      println(s"Result is - ${solution.result}")
+      println(s"Result is - ${solution.result}.")
   }
 
 }
