@@ -7,7 +7,8 @@ package object solutions {
     Question2Solution,
     Question3Solution,
     Question4Solution,
-    Question5Solution
+    Question5Solution,
+    Question6Solution
   )
 
   def getSolution(questionNumber: Int) : Option[Solution] = solutionList.find(_.questionNumber == questionNumber)
