@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question4.maxPalindromeProduct
+import question4.maxPalindromeProduct
 
 object Question4Solution extends Solution {
 

@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question5.smallestCommonMultiple
+import question5.smallestCommonMultiple
 
 object Question5Solution extends Solution {
 

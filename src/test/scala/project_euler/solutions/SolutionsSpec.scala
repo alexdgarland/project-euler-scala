@@ -32,4 +32,8 @@ class SolutionsSpec extends FlatSpec with Matchers {
     Question7Solution.result shouldBe "104743"
   }
 
+  "solution 8" should "get result 23514624000" in {
+    Question8Solution.result shouldBe "23514624000"
+  }
+
 }

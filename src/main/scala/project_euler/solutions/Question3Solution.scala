@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question3.primeFactors
+import question3.primeFactors
 
 object Question3Solution extends Solution {
 

@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question6.diffSumSquaresSquareSum
+import question6.diffSumSquaresSquareSum
 
 object Question6Solution extends Solution {
 

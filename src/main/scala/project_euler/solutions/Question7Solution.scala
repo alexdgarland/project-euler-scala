@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question7.nthPrime
+import question7.nthPrime
 
 object Question7Solution extends Solution {
 
