@@ -4,16 +4,6 @@ import org.scalatest._
 
 class Question3Spec extends FlatSpec with Matchers {
 
-  behavior of "the isPrime function"
-
-  it should  "identify 3 as prime" in {
-    isPrime(BigInt(3)) shouldBe true
-  }
-
-  it should "identify 10 as non-prime" in {
-    isPrime(BigInt(10)) shouldBe false
-  }
-
   behavior of "the primeFactors function"
 
   it should "get correct set of factors" in {

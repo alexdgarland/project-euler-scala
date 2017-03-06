@@ -1,11 +1,9 @@
 package project_euler.solutions
 
 import scala.annotation.tailrec
-import scala.collection.immutable.Range.BigInt
+import project_euler.shared_functions.isPrime
 
 package object question3 {
-
-  def isPrime(n : BigInt) : Boolean = !BigInt(2, n/2, 1).toStream.exists(n % _ == 0)
 
   private def nextPrimeFactor(n : BigInt) : BigInt = {
 
