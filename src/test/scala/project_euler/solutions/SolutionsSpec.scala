@@ -40,4 +40,10 @@ class SolutionsSpec extends FlatSpec with Matchers {
     Question9Solution.result shouldBe "31875000"
   }
 
+  behavior of "solution 10"
+  // This test takes a long time to run so ignoring by default
+  ignore should "get result 142913828922" in {
+    Question10Solution.result shouldBe "142913828922"
+  }
+
 }
