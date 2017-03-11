@@ -1,17 +1,37 @@
 package project_euler.app
 
-import project_euler.solutions.getSolution
+import scala.util.{Failure, Success, Try}
+import Run.{runAll, findSolution, runSolution}
 
 object EulerApp extends App {
 
-  val questionNumber = args(0).toInt
+  // Workaround for inserting double-quotes into interpolated string
+  private val quote = '"'
 
-  getSolution(questionNumber) match {
-    case None =>
-      println(s"ERROR - Solution not implemented for question $questionNumber.")
-    case Some(solution) =>
-      println(solution.description)
-      println(s"Result is - ${solution.result}.")
+  private def exitWithError(message : String) : Unit = {
+    println(s"ERROR - $message")
+    sys.exit(1)
+  }
+
+  private def handleQuestionNumber(n : Int) = {
+    findSolution(n) match {
+      case Some(solution) =>
+        runSolution(solution)
+      case None =>
+        exitWithError(s"Solution not implemented for question $n.")
+    }
+  }
+
+  args(0) match {
+    case "all" =>
+      runAll()
+    case arg =>
+      Try(arg.toInt) match {
+        case Success(i) =>
+          handleQuestionNumber(i)
+        case Failure(_) =>
+          exitWithError(s"Unexpected argument $quote$arg$quote.")
+      }
   }
 
 }
