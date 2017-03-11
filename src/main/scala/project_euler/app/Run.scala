@@ -17,6 +17,10 @@ object Run {
     Question10Solution
   )
 
+  val solutionList : String = solutions.map(
+    solution => s"${solution.questionNumber} - ${solution.questionTitle}"
+  ).mkString("\n")
+
   def findSolution(questionNumber : Int) : Option[Solution] =
     solutions.find(_.questionNumber == questionNumber)
 
