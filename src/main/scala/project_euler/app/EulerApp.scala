@@ -1,7 +1,6 @@
 package project_euler.app
 
 import scala.util.{Failure, Success, Try}
-import Run.{solutionList, runAll, findSolution, runSolution}
 
 object EulerApp extends App {
 
@@ -16,41 +15,35 @@ object EulerApp extends App {
                        |  - "all" to run all solutions in order
                        |  - an integer value for the specific question you want the solution for""".stripMargin
 
-  // Workaround for inserting double-quotes into interpolated string
-  private val quote = '"'
+  private val solutions = SolutionWrapper.default
 
-  private def exitWithUsageError(message : String) : Unit = {
-    println(s"ERROR - $message")
-    println(usage)
-    sys.exit(1)
-  }
+  try {
 
-  private def handleQuestionNumber(n : Int) = {
-    findSolution(n) match {
-      case Some(solution) =>
-        runSolution(solution)
-      case None =>
-        exitWithUsageError(s"Solution not implemented for question $n.")
+    if (args.length == 0)
+      throw new IllegalArgumentException(s"No arguments provided.")
+
+    args(0) match {
+      case "help" =>
+        println(usage)
+      case "list" =>
+        println(s"Available solutions:\n$solutions")
+      case "all" =>
+        solutions.runAll()
+      case arg =>
+        Try(arg.toInt) match {
+          case Success(i) =>
+            solutions.runForQuestion(i)
+          case Failure(_) =>
+            val quote = '"'
+            throw new IllegalArgumentException(s"Unexpected argument $quote$arg$quote.")
+        }
     }
+
   }
-
-  if (args.length == 0)
-    exitWithUsageError(s"No arguments provided.")
-
-  args(0) match {
-    case "help" =>
-      println(usage)
-    case "list" =>
-      println(s"Available solutions:\n$solutionList")
-    case "all" =>
-      runAll()
-    case arg =>
-      Try(arg.toInt) match {
-        case Success(i) =>
-          handleQuestionNumber(i)
-        case Failure(_) =>
-          exitWithUsageError(s"Unexpected argument $quote$arg$quote.")
-      }
+  catch {
+    case e : Exception =>
+      println(s"ERROR - ${e.getMessage}")
+      sys.exit(1)
   }
 
 }
