@@ -1,49 +1,38 @@
 package project_euler.app
 
-import scala.util.{Failure, Success, Try}
+import project_euler.app.Configuration.Command
+import Configuration.Parse
 
 object EulerApp extends App {
 
-  // TODO - decide if and when it's worth moving argument handling into scopt
+    val config = Parse(args)
 
-  private val usage = """
-                       |Project Euler Solution Runner App
-                       |
-                       |Requires one argument, which should be either:
-                       |  - "help" to show this usage information
-                       |  - "list" to list out implemented solutions
-                       |  - "all" to run all solutions in order
-                       |  - an integer value for the specific question you want the solution for""".stripMargin
-
-  private val solutions = SolutionWrapper.default
-
-  try {
-
-    if (args.length == 0)
-      throw new IllegalArgumentException(s"No arguments provided.")
-
-    args(0) match {
-      case "help" =>
-        println(usage)
-      case "list" =>
-        println(s"Available solutions:\n$solutions")
-      case "all" =>
-        solutions.runAll()
-      case arg =>
-        Try(arg.toInt) match {
-          case Success(i) =>
-            solutions.runForQuestion(i)
-          case Failure(_) =>
-            val quote = '"'
-            throw new IllegalArgumentException(s"Unexpected argument $quote$arg$quote.")
-        }
-    }
-
-  }
-  catch {
-    case e : Exception =>
-      println(s"ERROR - ${e.getMessage}")
+    if (config.isEmpty)
       sys.exit(1)
-  }
+
+    try {
+
+      val configValues = config.get
+      val solutions = SolutionWrapper.default
+
+      configValues.command match {
+
+        case Command.List =>
+          println(s"Available solutions:\n$solutions")
+
+        case Command.Run =>
+          if (configValues.runAll)
+            solutions.runAll()
+          else
+            solutions.runForQuestion(configValues.questionNumber.get)
+
+      }
+
+    }
+    catch {
+      case e : Exception =>
+        println(s"Application Error: ${e.getMessage}")
+        sys.exit(2)
+      }
 
 }
