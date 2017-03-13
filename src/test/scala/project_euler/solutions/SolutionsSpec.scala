@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class SolutionsSpec extends FlatSpec with Matchers {
 

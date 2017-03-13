@@ -1,14 +1,15 @@
 package project_euler.solutions.question5
 
-import org.scalatest._
+import org.scalatest.{FunSpec, Matchers}
 
+class Question5Spec extends FunSpec with Matchers {
 
-class Question5Spec extends FlatSpec with Matchers {
+  describe("the smallestCommonMultiple function") {
 
-  behavior of "the smallestCommonMultiple function"
+    it("should return 2520 for range 1 to 10") {
+      smallestCommonMultiple(1 to 10) shouldBe 2520
+    }
 
-  it should  "return 2520 for range 1 to 10" in {
-    smallestCommonMultiple(1 to 10) shouldBe 2520
   }
 
 }
