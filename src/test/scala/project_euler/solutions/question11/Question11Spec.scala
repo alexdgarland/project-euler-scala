@@ -2,14 +2,15 @@ package project_euler.solutions.question11
 
 import org.scalatest.{FunSpec, Matchers}
 
-
 class Question11Spec extends FunSpec with Matchers {
 
-  val testGrid = List(
-    List(1, 2, 3, 4),
-    List(5, 6, 7, 8),
-    List(9, 10, 11, 12),
-    List(13, 14, 15, 16)
+  val testGrid = Grid(
+    List(
+      List(1, 2, 3, 4),
+      List(5, 6, 7, 8),
+      List(9, 10, 11, 12),
+      List(13, 14, 15, 16)
+    )
   )
 
   describe("verticalLinesOfSize function") {
@@ -60,7 +61,7 @@ class Question11Spec extends FunSpec with Matchers {
 
   describe("forwardDiagonalLinesOfSize function") {
 
-    ignore("should return expected lines of size 3 against test grid") {
+    it("should return expected lines of size 3 against test grid") {
 
       val result = forwardDiagonalLinesOfSize(3, testGrid)
 
@@ -79,7 +80,7 @@ class Question11Spec extends FunSpec with Matchers {
 
   describe("backwardDiagonalLinesOfSize function") {
 
-    ignore("should return expected lines of size 3 against test grid") {
+    it("should return expected lines of size 3 against test grid") {
 
       val result = backwardDiagonalLinesOfSize(3, testGrid)
 

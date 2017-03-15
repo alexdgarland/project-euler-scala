@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question10.primesBelow
+import project_euler.solutions.question11.{Grid, horizontalLinesOfSize, verticalLinesOfSize, forwardDiagonalLinesOfSize, backwardDiagonalLinesOfSize}
 
 object Question11Solution extends Solution {
 
@@ -33,11 +33,24 @@ object Question11Solution extends Solution {
     |20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
     |01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
     |
-    |The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+    |The product of these numbers is 26 * 63 * 78 * 14 = 1788696.
     |
     |What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
     |""".stripMargin
 
-  override def result = ""
+  override def result = {
+
+    val grid = Grid.forQuestion11
+
+    List(
+      horizontalLinesOfSize(4, grid),
+      verticalLinesOfSize(4, grid),
+      forwardDiagonalLinesOfSize(4, grid),
+      backwardDiagonalLinesOfSize(4, grid)
+    ).flatten
+      .map(_.product)
+      .max
+      .toString
+  }
 
 }
