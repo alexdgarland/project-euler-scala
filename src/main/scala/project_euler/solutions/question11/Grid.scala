@@ -3,8 +3,6 @@ package project_euler.solutions.question11
 
 case class Grid(rows : List[List[Int]]) {
 
-  import Grid.Point
-
   val maxRowIndex = rows.length - 1
 
   val maxColumnIndex = rows.head.length - 1
@@ -15,8 +13,6 @@ case class Grid(rows : List[List[Int]]) {
 
 
 object Grid {
-
-  case class Point(row : Int, column : Int)
 
   val forQuestion11 =
     Grid(

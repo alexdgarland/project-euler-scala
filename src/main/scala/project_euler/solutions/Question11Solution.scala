@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question11.{Grid, horizontalLinesOfSize, verticalLinesOfSize, forwardDiagonalLinesOfSize, backwardDiagonalLinesOfSize}
+import project_euler.solutions.question11.{Grid, getLines, gridTransitions}
 
 object Question11Solution extends Solution {
 
@@ -40,17 +40,12 @@ object Question11Solution extends Solution {
 
   override def result = {
 
-    val grid = Grid.forQuestion11
-
-    List(
-      horizontalLinesOfSize(4, grid),
-      verticalLinesOfSize(4, grid),
-      forwardDiagonalLinesOfSize(4, grid),
-      backwardDiagonalLinesOfSize(4, grid)
-    ).flatten
+    gridTransitions
+      .flatMap(getLines(Grid.forQuestion11, 4, _))
       .map(_.product)
       .max
       .toString
+
   }
 
 }

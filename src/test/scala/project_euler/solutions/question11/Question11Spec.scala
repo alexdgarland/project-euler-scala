@@ -13,11 +13,11 @@ class Question11Spec extends FunSpec with Matchers {
     )
   )
 
-  describe("verticalLinesOfSize function") {
+  describe("vertical transition") {
 
     it("should return expected lines of size 3 against test grid") {
 
-      val result = verticalLinesOfSize(3, testGrid)
+      val result = getLines(testGrid, 3, VerticalTransition)
 
       result.length shouldBe 8
 
@@ -36,11 +36,11 @@ class Question11Spec extends FunSpec with Matchers {
 
   }
 
-  describe("horizontalLinesOfSize function") {
+  describe("horizontal transition") {
 
     it("should return expected lines of size 3 against test grid") {
 
-      val result = horizontalLinesOfSize(3, testGrid)
+      val result = getLines(testGrid, 3, HorizontalTransition)
 
       result.length shouldBe 8
 
@@ -59,11 +59,11 @@ class Question11Spec extends FunSpec with Matchers {
 
   }
 
-  describe("forwardDiagonalLinesOfSize function") {
+  describe("forward diagonal transition") {
 
     it("should return expected lines of size 3 against test grid") {
 
-      val result = forwardDiagonalLinesOfSize(3, testGrid)
+      val result = getLines(testGrid, 3, ForwardDiagonalTransition)
 
       result.length shouldBe 4
 
@@ -78,11 +78,11 @@ class Question11Spec extends FunSpec with Matchers {
 
   }
 
-  describe("backwardDiagonalLinesOfSize function") {
+  describe("backward diagonal transition") {
 
     it("should return expected lines of size 3 against test grid") {
 
-      val result = backwardDiagonalLinesOfSize(3, testGrid)
+      val result = getLines(testGrid, 3, BackwardDiagonalTransition)
 
       result.length shouldBe 4
 
