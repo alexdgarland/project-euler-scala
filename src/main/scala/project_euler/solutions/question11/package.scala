@@ -2,9 +2,10 @@ package project_euler.solutions
 
 package object question11 {
 
-  def getLines(grid : Grid, lineSize : Int, transition: GridTransition) = {
+  def getLines(grid : Grid, lineSize : Int, transition : GridTransition) = {
 
-    def getLineFromPoint(start: Point) = {
+    def getLineFromPoint(start : Point) = {
+
       (0 until lineSize).map {
         offset =>
           grid.pointValue(transition.newPoint(start, offset))

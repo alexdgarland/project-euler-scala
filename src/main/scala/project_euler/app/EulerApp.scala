@@ -3,36 +3,37 @@ package project_euler.app
 import project_euler.app.Configuration.Command
 import Configuration.Parse
 
+
 object EulerApp extends App {
 
-    val config = Parse(args)
+  val config = Parse(args)
 
-    if (config.isEmpty)
-      sys.exit(1)
+  if (config.isEmpty)
+    sys.exit(1)
 
-    try {
+  try {
 
-      val configValues = config.get
-      val solutions = SolutionWrapper.default
+    val configValues = config.get
+    val solutions = SolutionWrapper.default
 
-      configValues.command match {
+    configValues.command match {
 
-        case Command.List =>
-          println(s"Available solutions:\n$solutions")
+      case Command.List =>
+        println(s"Available solutions:\n$solutions")
 
-        case Command.Run =>
-          if (configValues.runAll)
-            solutions.runAll()
-          else
-            solutions.runForQuestion(configValues.questionNumber.get)
-
-      }
+      case Command.Run =>
+        if (configValues.runAll)
+          solutions.runAll()
+        else
+          solutions.runForQuestion(configValues.questionNumber.get)
 
     }
-    catch {
-      case e : Exception =>
-        println(s"Application Error: ${e.getMessage}")
-        sys.exit(2)
-      }
+
+  }
+  catch {
+    case e : Exception =>
+      println(s"Application Error: ${e.getMessage}")
+      sys.exit(2)
+  }
 
 }

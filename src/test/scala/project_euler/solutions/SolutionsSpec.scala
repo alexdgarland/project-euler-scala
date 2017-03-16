@@ -2,25 +2,26 @@ package project_euler.solutions
 
 import org.scalatest.{FlatSpec, Matchers}
 
+
 class SolutionsSpec extends FlatSpec with Matchers {
 
-  "solution 1" should  "get result 233168" in {
+  "solution 1" should "get result 233168" in {
     Question1Solution.result shouldBe "233168"
   }
 
-  "solution 2" should  "get result 4613732" in {
+  "solution 2" should "get result 4613732" in {
     Question2Solution.result shouldBe "4613732"
   }
 
-  "solution 3" should  "get result 6857" in {
+  "solution 3" should "get result 6857" in {
     Question3Solution.result shouldBe "6857"
   }
 
-  "solution 4" should  "get result 906609" in {
+  "solution 4" should "get result 906609" in {
     Question4Solution.result shouldBe "906609"
   }
 
-  "solution 5" should  "get result 232792560" in {
+  "solution 5" should "get result 232792560" in {
     Question5Solution.result shouldBe "232792560"
   }
 

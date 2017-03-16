@@ -2,6 +2,7 @@ package project_euler.solutions.question4
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question4Spec extends FunSpec with Matchers {
 
   describe("the isPalindrome function") {

@@ -5,6 +5,7 @@ package object question10 {
   def primesBelow(limit : Int) : Vector[Int] = {
 
     def recurse(nextCandidate : Int, knownPrimes : Vector[Int]) : Vector[Int] = {
+
       if (nextCandidate >= limit)
         knownPrimes
       else {

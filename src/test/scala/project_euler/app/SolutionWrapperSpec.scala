@@ -5,9 +5,11 @@ import org.scalatest.mockito.MockitoSugar
 import org.mockito.Mockito.{when, verify, never}
 import project_euler.solutions.Solution
 
+
 class SolutionWrapperSpec extends FunSpec with Matchers with MockitoSugar {
 
   private def mockSolution(number : Int, title : String) = {
+
     val solution = mock[Solution]
     when(solution.questionNumber).thenReturn(number)
     when(solution.questionTitle).thenReturn(title)

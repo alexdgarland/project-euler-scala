@@ -2,9 +2,11 @@ package project_euler.app
 
 import scopt.OptionParser
 
+
 object Configuration {
 
   object Command extends Enumeration {
+
     type Mode = Value
     val None, List, Run = Value
   }
@@ -44,10 +46,10 @@ object Configuration {
       )
 
     checkConfig(c =>
-      if(c.command == Command.None)
+      if (c.command == Command.None)
         failure("Command not set.")
       else if (c.command == Command.Run && c.questionNumber.isDefined && c.runAll)
-          failure("question number and \"all\" option cannot both be set.")
+        failure("question number and \"all\" option cannot both be set.")
       else if (c.command == Command.Run && c.questionNumber.isEmpty && !c.runAll)
         failure("to run solutions, one of question number and \"all\" option must be set.")
       else
@@ -57,6 +59,7 @@ object Configuration {
   }
 
   def Parse(args : Array[String]) : Option[AppConfig] = {
+
     parser.parse(args, AppConfig())
   }
 

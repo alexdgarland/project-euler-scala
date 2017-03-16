@@ -2,6 +2,7 @@ package project_euler.shared_functions
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class SharedFunctionsSpec extends FunSpec with Matchers {
 
   describe("the isPrime function") {

@@ -2,6 +2,7 @@ package project_euler.solutions.question11
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question11Spec extends FunSpec with Matchers {
 
   val testGrid = Grid(
@@ -50,7 +51,7 @@ class Question11Spec extends FunSpec with Matchers {
         IndexedSeq(5, 6, 7),
         IndexedSeq(6, 7, 8),
         IndexedSeq(9, 10, 11),
-        IndexedSeq(10, 11,12),
+        IndexedSeq(10, 11, 12),
         IndexedSeq(13, 14, 15),
         IndexedSeq(14, 15, 16)
       )

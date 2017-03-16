@@ -2,6 +2,7 @@ package project_euler.solutions.question8
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question8Spec extends FunSpec with Matchers {
 
   describe("productNumericChars function") {

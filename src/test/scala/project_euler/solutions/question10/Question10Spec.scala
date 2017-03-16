@@ -2,6 +2,7 @@ package project_euler.solutions.question10
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question10Spec extends FunSpec with Matchers {
 
   describe("primesBelow function") {

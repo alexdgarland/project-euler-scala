@@ -2,6 +2,7 @@ package project_euler.solutions.question7
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question7Spec extends FunSpec with Matchers {
 
   describe("the nthPrime function") {

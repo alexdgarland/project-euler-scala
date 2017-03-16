@@ -26,12 +26,14 @@ package object question8 {
   )
 
   def productNumericChars(s : String) : BigInt = {
+
     s.map((c : Char) => BigInt(c.asDigit)).product
   }
 
   private lazy val number = numberParts.mkString("")
 
   def largestProductInSeriesOfLength(n : Int) : BigInt = {
+
     (1 until (number.length - n))
       .map(pos => number.slice(pos, pos + n))
       .map(productNumericChars)

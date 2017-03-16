@@ -2,6 +2,7 @@ package project_euler.solutions.question9
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question9Spec extends FunSpec with Matchers {
 
   describe("tripletsSummingTo function") {

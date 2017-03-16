@@ -2,6 +2,7 @@ package project_euler.solutions.question5
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question5Spec extends FunSpec with Matchers {
 
   describe("the smallestCommonMultiple function") {

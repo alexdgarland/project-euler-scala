@@ -3,13 +3,14 @@ package project_euler.app
 import org.scalatest.{FunSpec, Matchers}
 import Configuration.{parser, AppConfig, Command}
 
+
 class ConfigurationSpec extends FunSpec with Matchers {
 
   describe("parser") {
 
-    def testParse(args: Array[String]) = parser.parse(args, AppConfig())
+    def testParse(args : Array[String]) = parser.parse(args, AppConfig())
 
-    it ("should fail if no args are provided") {
+    it("should fail if no args are provided") {
       testParse(Array[String]()) shouldBe None
     }
 

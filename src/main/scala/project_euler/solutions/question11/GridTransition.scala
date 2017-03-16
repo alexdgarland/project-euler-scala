@@ -9,17 +9,19 @@ sealed trait GridTransition {
   def newPoint(point : Point, offset : Int) : Point = {
 
     val newRow = rowStrategy.increment(point.row, offset)
+
     val newColumn = columnStrategy.increment(point.column, offset)
 
     Point(newRow, newColumn)
   }
 
-  def startPoints(grid: Grid, lineSize : Int) = {
+  def startPoints(grid : Grid, lineSize : Int) = {
 
     val rowRange = rowStrategy.getRange(grid.maxRowIndex, lineSize)
+
     val columnRange = columnStrategy.getRange(grid.maxColumnIndex, lineSize)
 
-    for { row <- rowRange ; column <- columnRange } yield Point(row, column)
+    for {row <- rowRange; column <- columnRange} yield Point(row, column)
   }
 
 }

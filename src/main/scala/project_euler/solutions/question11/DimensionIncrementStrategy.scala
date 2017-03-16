@@ -14,7 +14,7 @@ object ZeroIncrement extends DimensionIncrementStrategy {
 
   override def multiplier = 0
 
-  override def getRange(maxIndex: Int, lineSize: Int) = 0 to maxIndex
+  override def getRange(maxIndex : Int, lineSize : Int) = 0 to maxIndex
 
 }
 
@@ -22,7 +22,7 @@ object PositiveIncrement extends DimensionIncrementStrategy {
 
   override def multiplier = 1
 
-  override def getRange(maxIndex: Int, lineSize: Int) = 0 to maxIndex - (lineSize - 1)
+  override def getRange(maxIndex : Int, lineSize : Int) = 0 to maxIndex - (lineSize - 1)
 
 }
 
@@ -30,6 +30,6 @@ object NegativeIncrement extends DimensionIncrementStrategy {
 
   override def multiplier = -1
 
-  override def getRange(maxIndex: Int, lineSize: Int) = (lineSize - 1) to maxIndex
+  override def getRange(maxIndex : Int, lineSize : Int) = (lineSize - 1) to maxIndex
 
 }

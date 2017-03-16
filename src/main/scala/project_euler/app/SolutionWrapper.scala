@@ -2,6 +2,7 @@ package project_euler.app
 
 import project_euler.solutions._
 
+
 case class SolutionWrapper(solutionList : List[Solution], runner : SolutionRunner) {
 
   override def toString : String =
@@ -11,6 +12,7 @@ case class SolutionWrapper(solutionList : List[Solution], runner : SolutionRunne
     runner.run(solutionList)
 
   def runForQuestion(questionNumber : Int) : Unit = {
+
     val matchingSolutions = solutionList.filter(_.questionNumber == questionNumber)
     if (matchingSolutions.isEmpty)
       throw new IllegalArgumentException(s"Solution not implemented for question $questionNumber.")
@@ -35,6 +37,6 @@ object SolutionWrapper {
     Question11Solution
   )
 
-  val default: SolutionWrapper = new SolutionWrapper(allSolutions, DefaultSolutionRunner)
+  val default : SolutionWrapper = new SolutionWrapper(allSolutions, DefaultSolutionRunner)
 
 }

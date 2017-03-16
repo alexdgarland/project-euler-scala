@@ -2,6 +2,7 @@ package project_euler.solutions.question6
 
 import org.scalatest.{FunSpec, Matchers}
 
+
 class Question6Spec extends FunSpec with Matchers {
 
   describe("the diffSumSquaresSquareSum function") {
