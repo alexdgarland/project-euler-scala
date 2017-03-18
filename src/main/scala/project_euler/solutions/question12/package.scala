@@ -9,16 +9,12 @@ package object question12 {
 
   def factorsOf(n : Int) : Set[Int] = {
 
-    val root = sqrt(n).toInt
-
-    def recurse(i : Int, factors : Set[Int]) : Set[Int] = {
-
-      if (i > root) factors
-      else if (n % i == 0) recurse(i + 1, factors + (i, n / i))
-      else recurse(i + 1, factors)
-    }
-
-    recurse(1, Set())
+    (1 to sqrt(n).toInt)
+      .foldLeft(Set[Int]())(
+        (factors, i) =>
+          if (n % i == 0) factors + (i, n / i)
+          else factors
+      )
   }
 
   def firstTriangularWithMoreFactorsThan(n : Int) = {
