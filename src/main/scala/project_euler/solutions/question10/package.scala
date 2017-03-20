@@ -4,18 +4,23 @@ package object question10 {
 
   def primesBelow(limit : Int) : Vector[Int] = {
 
-    def recurse(nextCandidate : Int, knownPrimes : Vector[Int]) : Vector[Int] = {
+    def recurse(candidate : Int, knownPrimes : Vector[Int]) : Vector[Int] = {
 
-      if (nextCandidate >= limit)
+      if (candidate >= limit)
+
         knownPrimes
+
       else {
-        recurse(
-          nextCandidate + 1,
-          if (knownPrimes.par.forall(p => nextCandidate % p != 0))
-            knownPrimes :+ nextCandidate
+
+        val isPrime = knownPrimes.par.forall(p => candidate % p != 0)
+
+        val nextKnownPrimes =
+          if (isPrime)
+            knownPrimes :+ candidate
           else
             knownPrimes
-        )
+
+        recurse(candidate + 1, nextKnownPrimes)
       }
     }
 
