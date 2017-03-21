@@ -1,6 +1,6 @@
 package project_euler.solutions
 
-import project_euler.solutions.question14.collatzSequence
+import project_euler.solutions.question14.longestCollatzUnder
 
 
 object Question14Solution extends Solution {
@@ -32,6 +32,6 @@ object Question14Solution extends Solution {
 
   }
 
-  override def result = (1 until 1000000).maxBy(collatzSequence(_).length).toString
+  override def result = longestCollatzUnder(1000000).toString
 
 }
