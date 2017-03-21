@@ -8,14 +8,13 @@ import java.util.Date
 
 object Timing {
 
-  case class TimingDetails(startTime : Date, endTime : Date) {
+  case class TimingDetails(start : Date, end : Date) {
 
     override def toString = {
 
-      val duration = (endTime.getTime - startTime.getTime) / 1000
-      s"Calculation started at $startTime.\n" +
-        s"Calculation ended at $endTime.\n" +
-        s"Elapsed time was $duration seconds.\n"
+      val duration = (end.getTime - start.getTime) / 1000
+
+      s"Started: $start.\nEnded: $end.\nDuration: $duration seconds.\n"
     }
 
   }
