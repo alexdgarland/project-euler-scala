@@ -1,6 +1,7 @@
 package project_euler.solutions
 
 import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.tagobjects.Slow
 
 
 class SolutionsSpec extends FlatSpec with Matchers {
@@ -29,7 +30,7 @@ class SolutionsSpec extends FlatSpec with Matchers {
     Question6Solution.result shouldBe "25164150"
   }
 
-  "solution 7" should "get result 104743" in {
+  "solution 7" should "get result 104743" taggedAs Slow in {
     Question7Solution.result shouldBe "104743"
   }
 
@@ -41,9 +42,7 @@ class SolutionsSpec extends FlatSpec with Matchers {
     Question9Solution.result shouldBe "31875000"
   }
 
-  behavior of "solution 10"
-  // This test takes a long time to run so ignoring by default
-  ignore should "get result 142913828922" in {
+  "solution 10" should "get result 142913828922" taggedAs Slow in {
     Question10Solution.result shouldBe "142913828922"
   }
 
