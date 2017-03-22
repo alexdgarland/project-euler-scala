@@ -1,29 +1,33 @@
 package project_euler.app
 
-import java.util.Calendar
-import java.util.Date
+import com.github.nscala_time.time.Imports._
 
-// This is overkill for an app this size but fancied writing it anyway.
-// TODO : Could use Joda instead of java.util.
 
 object Timing {
 
-  case class TimingDetails(start : Date, end : Date) {
+  private val formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
+
+  private def format(dateTime : DateTime) = formatter.print(dateTime)
+
+  case class TimingDetails(start : DateTime, end : DateTime) {
+
+    val duration = (start to end).millis / 1000
 
     override def toString = {
 
-      val duration = (end.getTime - start.getTime) / 1000
-
-      s"Started: $start.\nEnded: $end.\nDuration: $duration seconds.\n"
+      s"""Started: ${format(start)}
+         |Ended: ${format(end)}
+         |Duration: $duration seconds
+         |""".stripMargin
     }
 
   }
 
   def withTiming[A](f : () => A) : (A, TimingDetails) = {
 
-    val startTime = Calendar.getInstance.getTime
+    val startTime = DateTime.now
     val result = f()
-    val endTime = Calendar.getInstance.getTime
+    val endTime = DateTime.now
 
     (result, TimingDetails(startTime, endTime))
   }

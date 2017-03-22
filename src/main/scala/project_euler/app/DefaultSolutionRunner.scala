@@ -1,8 +1,6 @@
 package project_euler.app
 
 import Timing.withTiming
-
-
 import project_euler.solutions.Solution
 
 

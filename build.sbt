@@ -9,6 +9,7 @@ lazy val root = (project in file(".")).
     )),
     name := "Project Euler",
     libraryDependencies += scopt,
+    libraryDependencies += nScalaTime,
     libraryDependencies += scalaTest % Test,
     libraryDependencies += mockito % Test
   )
