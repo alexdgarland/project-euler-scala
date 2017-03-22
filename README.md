@@ -1,4 +1,4 @@
-PROJECT EULER
+# PROJECT EULER
 
-Solutions to Project Euler questions written in Scala.
+Solutions to [Project Euler](https://projecteuler.net) questions written in Scala.
 
