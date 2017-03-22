@@ -1,11 +1,9 @@
 package project_euler.solutions
 
-import scala.annotation.tailrec
-
 
 package object question14 {
 
-  private def nextCollatzElement(i : Int) = {
+  private def nextCollatzElement(i : BigInt) : BigInt = {
 
     if (i % 2 == 0)
       i / 2
@@ -13,48 +11,29 @@ package object question14 {
       (i * 3) + 1
   }
 
-  @tailrec
-  def collatzSeq(
-    i : Int,
-    knownSeqs : Option[Map[Int, List[Int]]] = None,
-    prepender : List[Int] => List[Int] = l => l
-  ) : List[Int] = {
+  def collatzSequenceFrom(startingPoint : Int) : Stream[BigInt] = {
 
-    knownSeqs
-      .getOrElse(Map(1 -> List(1)))
-      .get(i) match {
+    lazy val seq : Stream[BigInt] = startingPoint #:: seq.map(nextCollatzElement)
 
-      case Some(sequence) =>
-        prepender(sequence)
-
-      case None =>
-        collatzSeq(nextCollatzElement(i), knownSeqs, list => prepender(i :: list))
-
-    }
+    seq
+      .takeWhile(_ != 1)
+      .append(Stream(1))
   }
 
-  def collatzSeqsUnder(limit : Int) : Map[Int, List[Int]] = {
-
-    def recurse(start : Int, knownSeqs : Option[Map[Int, List[Int]]]) : Map[Int, List[Int]] = {
-
-      if (start >= limit)
-        knownSeqs.get
-      else {
-        val newMap = knownSeqs.getOrElse(Map()) + (start -> collatzSeq(start, knownSeqs))
-        recurse(start + 1, Some(newMap))
-      }
-    }
-
-    recurse(1, None)
-  }
 
   def longestCollatzUnder(limit : Int) : Int = {
 
-    collatzSeqsUnder(limit)
-      .maxBy {
-        case (_, list) => list.length
+    case class Result(startingPoint : Int, sequenceLength : Int)
+
+    (1 until limit)
+      .par
+      .map {
+        i =>
+          val sequenceLength = collatzSequenceFrom(i).length
+          Result(i, sequenceLength)
       }
-      ._1
+      .maxBy(_.sequenceLength)
+      .startingPoint
   }
 
 }
