@@ -17,7 +17,7 @@ class Question14Spec extends FunSpec with Matchers {
 
     it("returns correct sequence for starting value 13 with input map provided") {
       val expected = List(13, 40, 20, 10, 5, 16, 8, 4, 2, 1)
-      val inputMap = Map(10 -> List(10, 5, 16, 8, 4, 2, 1))
+      val inputMap = Map(BigInt(10) -> List[BigInt](10, 5, 16, 8, 4, 2, 1))
       collatzSeq(13, Some(inputMap)) shouldBe expected
     }
 

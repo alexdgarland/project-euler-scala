@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 
 package object question14 {
 
-  private def nextCollatzElement(i : Int) = {
+  private def nextCollatzElement(i : BigInt) : BigInt = {
 
     if (i % 2 == 0)
       i / 2
@@ -15,32 +15,45 @@ package object question14 {
 
   @tailrec
   def collatzSeq(
-    i : Int,
-    knownSeqs : Option[Map[Int, List[Int]]] = None,
-    prepender : List[Int] => List[Int] = l => l
-  ) : List[Int] = {
+    i : BigInt,
+    knownSeqs : Option[Map[BigInt, List[BigInt]]] = None,
+    prepender : List[BigInt] => List[BigInt] = l => l
+  ) : List[BigInt] = {
 
     knownSeqs
-      .getOrElse(Map(1 -> List(1)))
-      .get(i) match {
+      .getOrElse(Map(BigInt(1) -> List(BigInt(1))))
+      .get(i)
+    match
+    {
 
       case Some(sequence) =>
+
         prepender(sequence)
 
       case None =>
-        collatzSeq(nextCollatzElement(i), knownSeqs, list => prepender(i :: list))
+
+        collatzSeq(
+          nextCollatzElement(i),
+          knownSeqs,
+          list => prepender(i :: list)
+        )
 
     }
   }
 
-  def collatzSeqsUnder(limit : Int) : Map[Int, List[Int]] = {
+  def collatzSeqsUnder(limit : BigInt) : Map[BigInt, List[BigInt]] = {
 
-    def recurse(start : Int, knownSeqs : Option[Map[Int, List[Int]]]) : Map[Int, List[Int]] = {
+    def recurse(start : BigInt, knownSeqs : Option[Map[BigInt, List[BigInt]]]) : Map[BigInt, List[BigInt]] = {
 
       if (start >= limit)
+
         knownSeqs.get
+
       else {
-        val newMap = knownSeqs.getOrElse(Map()) + (start -> collatzSeq(start, knownSeqs))
+
+        val newMap = knownSeqs.getOrElse(Map()) +
+          (start -> collatzSeq(start, knownSeqs))
+
         recurse(start + 1, Some(newMap))
       }
     }
@@ -48,7 +61,7 @@ package object question14 {
     recurse(1, None)
   }
 
-  def longestCollatzUnder(limit : Int) : Int = {
+  def longestCollatzUnder(limit : BigInt) : BigInt = {
 
     collatzSeqsUnder(limit)
       .maxBy {
