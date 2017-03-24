@@ -6,60 +6,36 @@ import org.scalatest.tagobjects.Slow
 
 class SolutionsSpec extends FlatSpec with Matchers {
 
-  "solution 1" should "get result 233168" in {
-    Question1Solution.result shouldBe "233168"
-  }
+  val nonSlowTestCases = Map(
+    Question1Solution -> "233168",
+    Question2Solution -> "4613732",
+    Question3Solution -> "6857",
+    Question4Solution -> "906609",
+    Question5Solution -> "232792560",
+    Question6Solution -> "25164150",
+    Question8Solution -> "23514624000",
+    Question9Solution -> "31875000",
+    Question11Solution -> "70600674",
+    Question12Solution -> "76576500",
+    Question13Solution -> "5537376230",
+    Question14Solution -> "837799",
+    Question17Solution -> "21124"
+  )
 
-  "solution 2" should "get result 4613732" in {
-    Question2Solution.result shouldBe "4613732"
-  }
+  for ((solution, expectedResult) <- nonSlowTestCases) {
 
-  "solution 3" should "get result 6857" in {
-    Question3Solution.result shouldBe "6857"
-  }
+    s"solution ${solution.questionNumber}" should s"get result $expectedResult" in {
+      solution.result shouldBe expectedResult
+    }
 
-  "solution 4" should "get result 906609" in {
-    Question4Solution.result shouldBe "906609"
-  }
-
-  "solution 5" should "get result 232792560" in {
-    Question5Solution.result shouldBe "232792560"
-  }
-
-  "solution 6" should "get result 25164150" in {
-    Question6Solution.result shouldBe "25164150"
   }
 
   "solution 7" should "get result 104743" taggedAs Slow in {
     Question7Solution.result shouldBe "104743"
   }
 
-  "solution 8" should "get result 23514624000" in {
-    Question8Solution.result shouldBe "23514624000"
-  }
-
-  "solution 9" should "get result 31875000" in {
-    Question9Solution.result shouldBe "31875000"
-  }
-
   "solution 10" should "get result 142913828922" taggedAs Slow in {
     Question10Solution.result shouldBe "142913828922"
-  }
-
-  "solution 11" should "get result 70600674" in {
-    Question11Solution.result shouldBe "70600674"
-  }
-
-  "solution 12" should "get result 76576500" in {
-    Question12Solution.result shouldBe "76576500"
-  }
-
-  "solution 13" should "get result 5537376230" in {
-    Question13Solution.result shouldBe "5537376230"
-  }
-
-  "solution 14" should "get result 837799" in {
-    Question14Solution.result shouldBe "837799"
   }
 
 }
