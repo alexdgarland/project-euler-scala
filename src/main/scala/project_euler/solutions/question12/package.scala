@@ -10,10 +10,14 @@ package object question12 {
   def factorsOf(n : Int) : Set[Int] = {
 
     (1 to sqrt(n).toInt)
-      .foldLeft(Set[Int]())(
+      .foldLeft(
+        Set[Int]()
+      )(
         (factors, i) =>
-          if (n % i == 0) factors + (i, n / i)
-          else factors
+          if (n % i == 0)
+            factors + (i, n / i)
+          else
+            factors
       )
   }
 

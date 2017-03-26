@@ -5,6 +5,9 @@ import scala.annotation.tailrec
 
 package object question14 {
 
+  type SequenceMap = Map[BigInt, List[BigInt]]
+  type Prepender = List[BigInt] => List[BigInt]
+
   private def nextCollatzElement(i : BigInt) : BigInt = {
 
     if (i % 2 == 0)
@@ -16,8 +19,8 @@ package object question14 {
   @tailrec
   def collatzSeq(
     i : BigInt,
-    knownSeqs : Option[Map[BigInt, List[BigInt]]] = None,
-    prepender : List[BigInt] => List[BigInt] = l => l
+    knownSeqs : Option[SequenceMap] = None,
+    prepender : Prepender = l => l
   ) : List[BigInt] = {
 
     knownSeqs
@@ -41,9 +44,9 @@ package object question14 {
     }
   }
 
-  def collatzSeqsUnder(limit : BigInt) : Map[BigInt, List[BigInt]] = {
+  def collatzSeqsUnder(limit : BigInt) : SequenceMap = {
 
-    def recurse(start : BigInt, knownSeqs : Option[Map[BigInt, List[BigInt]]]) : Map[BigInt, List[BigInt]] = {
+    def recurse(start : BigInt, knownSeqs : Option[SequenceMap]) : SequenceMap = {
 
       if (start >= limit)
 
