@@ -45,17 +45,16 @@ object Configuration {
           .action((i, c) => c.copy(questionNumber = Some(i)))
       )
 
-    checkConfig(c =>
-      if (c.command == Command.None)
+    checkConfig {
+      case AppConfig(Command.None, _, _) =>
         failure("Command not set.")
-      else if (c.command == Command.Run && c.questionNumber.isDefined && c.runAll)
+      case AppConfig(Command.Run, true, Some(_)) =>
         failure("question number and \"all\" option cannot both be set.")
-      else if (c.command == Command.Run && c.questionNumber.isEmpty && !c.runAll)
+      case AppConfig(Command.Run, false, None) =>
         failure("to run solutions, one of question number and \"all\" option must be set.")
-      else
+      case _ =>
         success
-    )
-
+    }
   }
 
   def Parse(args : Array[String]) : Option[AppConfig] = {

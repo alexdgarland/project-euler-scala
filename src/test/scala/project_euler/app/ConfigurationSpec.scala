@@ -8,20 +8,20 @@ class ConfigurationSpec extends FunSpec with Matchers {
 
   describe("parser") {
 
-    def testParse(args : Array[String]) = parser.parse(args, AppConfig())
+    def testParse(args : String*) = parser.parse(args, AppConfig())
 
     it("should fail if no args are provided") {
-      testParse(Array[String]()) shouldBe None
+      testParse() shouldBe None
     }
 
     describe("with List command") {
 
       it("can be set successfully with no arguments") {
-        testParse(Array("list")).get.command shouldBe Command.List
+        testParse("list") shouldBe Some(AppConfig(Command.List, runAll = false, None))
       }
 
       it("fails to parse when given arguments") {
-        testParse(Array("list", "-a")) shouldBe None
+        testParse("list", "-a") shouldBe None
       }
 
     }
@@ -29,35 +29,27 @@ class ConfigurationSpec extends FunSpec with Matchers {
     describe("with Run command") {
 
       it("should fail when requested without \"all\" flag or question number") {
-        testParse(Array("run")) shouldBe None
+        testParse("run") shouldBe None
       }
 
       it("can have question number set with long version of argument") {
-        val config = testParse(Array("run", "--question", "1")).get
-        config.command shouldBe Command.Run
-        config.questionNumber shouldBe Some(1)
+        testParse("run", "--question", "1") shouldBe Some(AppConfig(Command.Run, runAll = false, Some(1)))
       }
 
       it("can have question number set with short version of argument") {
-        val config = testParse(Array("run", "-q", "1")).get
-        config.command shouldBe Command.Run
-        config.questionNumber shouldBe Some(1)
+        testParse("run", "-q", "1") shouldBe Some(AppConfig(Command.Run, runAll = false, Some(1)))
       }
 
       it("can have \"all\" flag set with long version of argument") {
-        val config = testParse(Array("run", "--all")).get
-        config.command shouldBe Command.Run
-        config.runAll shouldBe true
+        testParse("run", "--all") shouldBe Some(AppConfig(Command.Run, runAll = true, None))
       }
 
       it("can have \"all\" flag set with short version of argument") {
-        val config = testParse(Array("run", "-a")).get
-        config.command shouldBe Command.Run
-        config.runAll shouldBe true
+        testParse("run", "-a") shouldBe Some(AppConfig(Command.Run, runAll = true, None))
       }
 
       it("should fail when requested with both \"all\" flag and question number") {
-        testParse(Array("run", "-a", "-q", "1")) shouldBe None
+        testParse("run", "-a", "-q", "1") shouldBe None
       }
 
     }
