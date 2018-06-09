@@ -20,7 +20,8 @@ class SolutionsSpec extends FlatSpec with Matchers {
     Question13Solution -> "5537376230",
     Question14Solution -> "837799",
     Question17Solution -> "21124",
-    Question22Solution -> "871198282"
+    Question22Solution -> "871198282",
+    Question49Solution -> "296962999629"
   )
 
   for ((solution, expectedResult) <- nonSlowTestCases) {

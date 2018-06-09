@@ -6,7 +6,6 @@ import scopt.OptionParser
 object Configuration {
 
   object Command extends Enumeration {
-
     type Mode = Value
     val None, List, Run = Value
   }
@@ -17,7 +16,7 @@ object Configuration {
     questionNumber : Option[Int] = None
   )
 
-  val parser = new OptionParser[AppConfig]("project_euler.sh") {
+  val parser : OptionParser[AppConfig] = new OptionParser[AppConfig]("project_euler.sh") {
 
     head("\n****** Project Euler Solutions ******\n")
 

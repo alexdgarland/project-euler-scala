@@ -39,7 +39,8 @@ object SolutionWrapper {
     Question13Solution,
     Question14Solution,
     Question17Solution,
-    Question22Solution
+    Question22Solution,
+    Question49Solution
   )
 
   val default : SolutionWrapper = new SolutionWrapper(allSolutions, DefaultSolutionRunner)
