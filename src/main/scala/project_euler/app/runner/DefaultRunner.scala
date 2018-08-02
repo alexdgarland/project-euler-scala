@@ -1,10 +1,9 @@
-package project_euler.app
+package project_euler.app.runner
 
-import Timing.withTiming
 import project_euler.solutions.Solution
+import Timing.withTiming
 
-
-object DefaultSolutionRunner extends SolutionRunner {
+object DefaultRunner extends SolutionRunner {
 
   override def run(solutionList : List[Solution]) : Unit = {
 

@@ -1,4 +1,4 @@
-package project_euler.app
+package project_euler.app.runner
 
 import com.github.nscala_time.time.Imports._
 
@@ -11,7 +11,7 @@ object Timing {
 
   case class TimingDetails(start : DateTime, end : DateTime) {
 
-    val duration = (start to end).millis / 1000
+    private val duration = (start to end).millis / 1000
 
     override def toString = {
 

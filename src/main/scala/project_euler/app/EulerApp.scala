@@ -1,39 +1,33 @@
 package project_euler.app
 
-import project_euler.app.Configuration.Command
 import Configuration.Parse
-
+import project_euler.solutions._
+import scala.util.Failure
 
 object EulerApp extends App {
 
-  val config = Parse(args)
+  Parse(args) match {
 
-  if (config.isEmpty)
-    sys.exit(1)
+    case None =>
 
-  try {
+      sys.exit(1)
 
-    val configValues = config.get
-    val solutions = SolutionWrapper.default
+    case Some(config) =>
 
-    configValues.command match {
+      config.command match {
 
-      case Command.List =>
-        println(s"Available solutions:\n$solutions")
+        case Some(command) =>
 
-      case Command.Run =>
-        if (configValues.runAll)
-          solutions.runAll()
-        else
-          solutions.runForQuestion(configValues.questionNumber.get)
+          command(ALL_SOLUTIONS) match {
 
-    }
+            case Failure(e) =>
 
+              println(s"Application failed - ${e.getMessage}")
+              sys.exit(1)
+
+          }
+      }
   }
-  catch {
-    case e : Exception =>
-      println(s"Application Error: ${e.getMessage}")
-      sys.exit(2)
-  }
+
 
 }

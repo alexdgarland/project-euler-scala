@@ -1,4 +1,4 @@
-package project_euler.app
+package project_euler.app.runner
 
 import project_euler.solutions.Solution
 
