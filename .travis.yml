@@ -2,6 +2,6 @@ language: scala
 scala:
   - 2.12.1
 jdk:
-  - oraclejdk11
+  - openjdk11
 script:
   - . test_nonslow.sh
